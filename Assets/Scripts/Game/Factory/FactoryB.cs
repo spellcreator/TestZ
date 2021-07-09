@@ -12,7 +12,7 @@ public class FactoryB
     {
         this.inventory = inventory;
         this.bView = bView;
-        this.bView.ButtonClickB += Work;
+        this.bView.ButtonClick += Work;
     }
 
     public void Work()

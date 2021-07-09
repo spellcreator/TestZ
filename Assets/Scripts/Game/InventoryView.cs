@@ -14,13 +14,12 @@ public class InventoryView : MonoBehaviour
 
     public Inventory inventory;
 
-    private void Start()
+
+   private void Start()
     {
         SetTextAB();
-        factoryA.ResourceEndFly += SetTextA;
-        factoryB.ResourceEndFly += SetTextB;
-
     }
+
     public void SetTextA()
     {
         resourceA.DOFade(0, 0.5f).OnComplete(() => { resourceA.text = inventory.Resources[ResourceType.ResourceA].ToString(); resourceA.DOFade(1, 0.5f); });
@@ -35,4 +34,5 @@ public class InventoryView : MonoBehaviour
         resourceA.DOFade(0, 0.5f).OnComplete(() => { resourceA.text = inventory.Resources[ResourceType.ResourceA].ToString(); resourceA.DOFade(1, 0.5f); });
         resourceB.DOFade(0, 0.5f).OnComplete(() => { resourceB.text = inventory.Resources[ResourceType.ResourceB].ToString(); resourceB.DOFade(1, 0.5f); });
     }
+
 }

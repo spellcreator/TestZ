@@ -1185,6 +1185,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 223620875}
     - target: {fileID: 9175743146177477410, guid: a7f1748d9eb116949a6ebac3b3bc4784, type: 3}
+      propertyPath: time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175743146177477410, guid: a7f1748d9eb116949a6ebac3b3bc4784, type: 3}
+      propertyPath: view
+      value: 
+      objectReference: {fileID: 1310604850}
+    - target: {fileID: 9175743146177477410, guid: a7f1748d9eb116949a6ebac3b3bc4784, type: 3}
       propertyPath: endFlyResourcePoint
       value: 
       objectReference: {fileID: 215147465}
@@ -1464,6 +1472,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 223620875}
+    - target: {fileID: 4750953337795393439, guid: 89587a12ec8592f458a75de29f6e92d3, type: 3}
+      propertyPath: view
+      value: 
+      objectReference: {fileID: 1310604850}
     - target: {fileID: 4750953337795393439, guid: 89587a12ec8592f458a75de29f6e92d3, type: 3}
       propertyPath: endFlyResourcePoint
       value: 

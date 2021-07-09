@@ -7,7 +7,7 @@ using System;
 
 public class Inventory : MonoBehaviour
 {
-    //public event Action AddResources;
+    public event Action AddResources;
 
     private Dictionary<ResourceType, int> resources;
     private string fileName = "Save.json";
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
         if (collector != null)
         {
             collector.Collect(count);
-           // AddResources?.Invoke();
+            AddResources?.Invoke();
         }
         else
         {

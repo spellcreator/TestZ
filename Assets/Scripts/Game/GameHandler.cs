@@ -18,22 +18,10 @@ public class GameHandler : MonoBehaviour
     {
         //загружаем баланс, или создаем новый если файла нет 
         inventoryView.inventory.Load();
-        //Logic();
+        Logic();
     }
 
     #region Fabrics
-    // Инстантиейтить фабрики
-    /*
-    private FactoryAView InstantiateFabricsA()
-    {
-        var A = Instantiate(factoryAView, startPosA);
-        return A;
-    }
-    private FactoryBView InstantiateFabricsB()
-    {
-        var B = Instantiate(factoryBView, startPosB);
-        return B;
-    }*/
     // Загрузка логики и связывание с визуалом
     void Logic()
     {
