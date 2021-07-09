@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
     private FactoryA factoryA;
     private FactoryB factoryB;
 
-    public InventoryView inventoryView;
+    public Inventory inventory;
 
     public FactoryAView factoryAView;
     public FactoryBView factoryBView;
@@ -17,16 +17,16 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         //загружаем баланс, или создаем новый если файла нет 
-        inventoryView.inventory.Load();
-        Logic();
+        inventory.Load();
+        CreateFactory();
     }
 
     #region Fabrics
     // Загрузка логики и связывание с визуалом
-    void Logic()
+    void CreateFactory()
     {
-        factoryA = new FactoryA(inventoryView.inventory, factoryAView);
-        factoryB = new FactoryB(inventoryView.inventory, factoryBView);
+        factoryA = new FactoryA(inventory, factoryAView);
+        factoryB = new FactoryB(inventory, factoryBView);
     }
     #endregion Fabrics
 }
