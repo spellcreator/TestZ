@@ -19,7 +19,7 @@ public class FactoryAView : MonoBehaviour
     public GameObject ball;
     public Slider slider;
 
-
+    public Inventory inventory;
     public InventoryView view;
 
 
@@ -28,20 +28,17 @@ public class FactoryAView : MonoBehaviour
         FactoryIdle();
     }
 
-    private void Update()
+    private void FactoryIdle()
     {
         SetText();
-    }
-
-    void FactoryIdle()
-    {
+        inventory.AddResources += SetText;
         isWork = false; 
         slider.gameObject.SetActive(false); 
         button.onClick.AddListener(PrepareFactory); 
     }
 
     // Проверяем, если фактори НЕ запущена то запускаем 
-    void PrepareFactory()
+    private void PrepareFactory()
     {
         if (!isWork)
         {
@@ -53,27 +50,25 @@ public class FactoryAView : MonoBehaviour
         }
     }
     // Фактора работает и возвращает продукт после РАБоты
-    public IEnumerator FactoryWork()
+    private IEnumerator FactoryWork()
     {
         slider.gameObject.SetActive(true);
         slider.DOValue(1, time).OnComplete(() => { slider.value = 0; }); 
         yield return new WaitForSeconds(time);
 
-        //buttonText.text = "Ready";
-
         EndWork();
     }
-    void EndWork()
+    private void EndWork()
     {
         slider.gameObject.SetActive(false);
         isWork = false;
         button.onClick.AddListener(PrepareFactory);
-
+        SetText();
         var sprite = Instantiate(ball, transform);
         sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); view.SetTextA(); });
     }
 
-    void SetText()
+    private void SetText()
     {
         if(!isWork)
         {
@@ -84,6 +79,4 @@ public class FactoryAView : MonoBehaviour
             buttonText.text = ("Working");
         }
     }
-
-
 }

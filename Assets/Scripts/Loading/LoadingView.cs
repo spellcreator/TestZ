@@ -19,7 +19,8 @@ public class LoadingView : MonoBehaviour
     {
         logo.color = new Color(1, 1, 1, 0);
         logo.DOFade(1, loadingTime).SetEase(Ease.Linear);
-    }public void FadeLoading()
+    }
+    public void FadeLoading()
     {
         logo.color = new Color(1, 1, 1, 1);
         back.color = new Color(0, 0, 0, 1);

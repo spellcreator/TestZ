@@ -23,7 +23,7 @@ public class GameHandler : MonoBehaviour
 
     #region Fabrics
     // Загрузка логики и связывание с визуалом
-    void CreateFactory()
+    private void CreateFactory()
     {
         factoryA = new FactoryA(inventory, factoryAView);
         factoryB = new FactoryB(inventory, factoryBView);

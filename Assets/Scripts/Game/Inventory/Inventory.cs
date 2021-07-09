@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public event Action AddResources;
 
     private Dictionary<ResourceType, int> resources;
-    private string fileName = "Save.json";
+    private const string fileName = "Save.json";
     
     public Dictionary<ResourceType, int> Resources
     {

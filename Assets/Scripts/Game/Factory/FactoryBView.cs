@@ -20,24 +20,26 @@ public class FactoryBView : MonoBehaviour
     public Transform redFabricFlyResourcePoint;
     public GameObject Bball;
     public GameObject Rball;
-
-
     public InventoryView view;
+    public Inventory inventory;
+
 
     private void Start()
     {
-        button.onClick.AddListener(OnButtonClick);
-        isWork = false;
-        slider.gameObject.SetActive(false);
+        FactoryIdle();
     }
 
-    private void Update()
+    private void FactoryIdle()
     {
         SetText();
+        inventory.AddResources += SetText;
+        isWork = false;
+        slider.gameObject.SetActive(false);
+        button.onClick.AddListener(PrepareFactory);
     }
 
     // Проверяем, если фактори НЕ запущена то запускаем 
-    private void OnButtonClick()
+    private void PrepareFactory()
     {
         if (!isWork)
         {
@@ -45,16 +47,15 @@ public class FactoryBView : MonoBehaviour
             {
                 slider.value = 0;
                 isWork = true;
-                button.onClick.RemoveListener(OnButtonClick);
+                button.onClick.RemoveListener(PrepareFactory);
                 ButtonClick?.Invoke();
                 view.SetTextA();
                 StartCoroutine(SpawnRedBall());
             }
-
         }
     }
     // Фактора работает и возвращает продукт после РАБоты
-    public IEnumerator SpawnRedBall()
+    private IEnumerator SpawnRedBall()
     {
         float spawnTime = 0.1f;
         ballInAnim = 10;
@@ -69,7 +70,7 @@ public class FactoryBView : MonoBehaviour
         StartCoroutine(FactoryWork());
     }
 
-    public IEnumerator FactoryWork()
+    private IEnumerator FactoryWork()
     {
         slider.gameObject.SetActive(true);
         slider.DOValue(1, time).OnComplete(() => { slider.value = 0;});
@@ -77,19 +78,18 @@ public class FactoryBView : MonoBehaviour
 
         slider.gameObject.SetActive(false);
         isWork = false;
-        button.onClick.AddListener(OnButtonClick);
+        button.onClick.AddListener(PrepareFactory);
 
         CreateResource();
 
     }
-    void CreateResource()
+    private void CreateResource()
     { 
          var sprite = Instantiate(Bball, transform);
          sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); view.SetTextB(); });
-
     }
 
-    void SetText()
+    private void SetText()
     {
         if(isWork == false && view.inventory.Resources[ResourceType.ResourceA] >= 10)
         {
@@ -100,81 +100,4 @@ public class FactoryBView : MonoBehaviour
             buttonText.text = ("Disable");
         }
     }
-    
 }
-
-
-
-
-/*
-
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
-
-public class FactoryAView : MonoBehaviour
-{
-
-    public event Action ButtonClick;
-
-    public event Action ResourceEndFly;
-
-    private bool isWork;
-    public float time = 5;
-
-    public Button button;
-    public TMPro.TextMeshProUGUI buttonText;
-    public Transform endFlyResourcePoint;
-    public GameObject ball;
-    public Slider slider;
-    private void Start()
-    {
-        FactoryIdle();
-    }
-
-    void FactoryIdle()
-    {
-        isWork = false; // фактори не работает
-        slider.gameObject.SetActive(false); // выключаем слайдер 
-        button.onClick.AddListener(PrepareFactory); // Вызываем онклик, по сути начинаем подготовку фабрики
-    }
-
-    // Проверяем, если фактори НЕ запущена то запускаем 
-    void PrepareFactory()
-    {
-        if (!isWork)// Проверяем что фабрика не работает
-        {
-            slider.value = 0;// Сбрасываем слайдер в 0
-            isWork = true; // Включаем фабрику
-            button.onClick.RemoveListener(PrepareFactory); // Выключаем кнопку, чтоб еще раз не запустилась фабрика
-            StartCoroutine(FactoryWork());// Запускаем фабрику
-        }
-    }
-    // Фактора работает и возвращает продукт после РАБоты
-    public IEnumerator FactoryWork()
-    {
-        slider.gameObject.SetActive(true);//Включаем прогресс бар для визуала производства
-        slider.DOValue(1, time).OnComplete(() => { slider.value = 0; });//Двигаем слайдер до 1, тайм = время производства. збрасываем слайдер в 0, для ЧСВ 
-        yield return new WaitForSeconds(time);// Ждем нужное нам время. Это и считается работой фабрики
-
-        //buttonText.text = "Ready";
-
-        EndWork();
-    }
-    void EndWork()
-    {
-        ButtonClick?.Invoke();
-        slider.gameObject.SetActive(false);// Выключаем прогресс бар
-        isWork = false;//грим что фабрика не работает (закончила работу)
-        button.onClick.AddListener(PrepareFactory);//Включаем кнопку, что бы можно было производить следующий ресурс
-
-        var sprite = Instantiate(ball, transform);// Создаем высер нашего производства
-        sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); }); // Хуярим его на склад
-    }
-
-}
-*/

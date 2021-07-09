@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374ff082dc765194a9c08d4fb750549c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryView: {fileID: 1310604850}
+  inventory: {fileID: 1310604849}
   factoryAView: {fileID: 650712177}
   factoryBView: {fileID: 3989822934910095963}
 --- !u!4 &416935280

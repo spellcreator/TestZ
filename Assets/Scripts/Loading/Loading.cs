@@ -7,7 +7,7 @@ public class Loading : MonoBehaviour
 {
     
     public LoadingView loadingView;
-    void Start()
+    private void Start()
     {
         loadingView.ShowLogo();
     }
