@@ -59,14 +59,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Game\ResourceType.cs" />
+    <Compile Include="Assets\Scripts\Game\ResourceCollector\ResourceType.cs" />
     <Compile Include="Assets\Scripts\Game\ResourceCollector\ResourceCollectorA.cs" />
     <Compile Include="Assets\Scripts\Game\ResourceCollector\IResourceCollector.cs" />
-    <Compile Include="Assets\Scripts\Game\InventoryView.cs" />
+    <Compile Include="Assets\Scripts\Game\Inventory\InventoryView.cs" />
     <Compile Include="Assets\Scripts\Game\Factory\FactoryBView.cs" />
     <Compile Include="Assets\Scripts\Loading\Loading.cs" />
     <Compile Include="Assets\Scripts\Game\GameHandler.cs" />
-    <Compile Include="Assets\Scripts\Game\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Game\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Game\ResourceCollector\CollectorFactory.cs" />
     <Compile Include="Assets\Scripts\Game\Factory\FactoryAView.cs" />
     <Compile Include="Assets\Scripts\Loading\LoadingView.cs" />

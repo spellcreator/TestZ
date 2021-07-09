@@ -26,18 +26,16 @@ public class FactoryBView : MonoBehaviour
 
     private void Start()
     {
-        if (view.inventory.Resources[ResourceType.ResourceA] >= 10)
-        {
-            SetText("Disable");
-        }
-        else
-        {
-            SetText("Ready");
-        }
-            button.onClick.AddListener(OnButtonClick);
+        button.onClick.AddListener(OnButtonClick);
         isWork = false;
         slider.gameObject.SetActive(false);
     }
+
+    private void Update()
+    {
+        SetText();
+    }
+
     // Проверяем, если фактори НЕ запущена то запускаем 
     private void OnButtonClick()
     {
@@ -45,7 +43,6 @@ public class FactoryBView : MonoBehaviour
         {
             if(view.inventory.Resources[ResourceType.ResourceA] >= 10)
             {
-                SetText("Waiting");
                 slider.value = 0;
                 isWork = true;
                 button.onClick.RemoveListener(OnButtonClick);
@@ -53,7 +50,6 @@ public class FactoryBView : MonoBehaviour
                 view.SetTextA();
                 StartCoroutine(SpawnRedBall());
             }
-            //StartCoroutine(FactoryWork());
 
         }
     }
@@ -71,34 +67,40 @@ public class FactoryBView : MonoBehaviour
         }
         yield return new WaitForSeconds(spawnTime * ballInAnim * timeMove);
         StartCoroutine(FactoryWork());
-        SetText("Working...");
     }
 
     public IEnumerator FactoryWork()
     {
         slider.gameObject.SetActive(true);
-        slider.DOValue(1, time).OnComplete(() => { slider.value = 0; });
+        slider.DOValue(1, time).OnComplete(() => { slider.value = 0;});
         yield return new WaitForSeconds(time);
 
         slider.gameObject.SetActive(false);
         isWork = false;
         button.onClick.AddListener(OnButtonClick);
-        SetText("Ready");
 
         CreateResource();
 
     }
     void CreateResource()
-    {
-        var sprite = Instantiate(Bball, transform);
-        sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); view.SetTextB();});
+    { 
+         var sprite = Instantiate(Bball, transform);
+         sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); view.SetTextB(); });
 
     }
 
-    void SetText(string text)
+    void SetText()
     {
-            buttonText.text = text;
+        if(isWork == false && view.inventory.Resources[ResourceType.ResourceA] >= 10)
+        {
+            buttonText.text = ("Ready");
+        }
+        else
+        {
+            buttonText.text = ("Disable");
+        }
     }
+    
 }
 
 
