@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\Game\Factory\FactoryAView.cs" />
     <Compile Include="Assets\Scripts\Loading\LoadingView.cs" />
     <Compile Include="Assets\Scripts\Game\Factory\FactoryA.cs" />
-    <Compile Include="Assets\Scripts\Game\Factory\FactoryB.cs" />
     <Compile Include="Assets\Scripts\Game\ResourceCollector\ResourceCollectorB.cs" />
   </ItemGroup>
   <ItemGroup>

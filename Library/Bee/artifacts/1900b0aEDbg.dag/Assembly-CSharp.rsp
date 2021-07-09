@@ -347,6 +347,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/Game/Factory/FactoryA.cs"
 "Assets/Scripts/Game/Factory/FactoryAView.cs"
+"Assets/Scripts/Game/Factory/FactoryB.cs"
 "Assets/Scripts/Game/Factory/FactoryBView.cs"
 "Assets/Scripts/Game/GameHandler.cs"
 "Assets/Scripts/Game/Inventory/Inventory.cs"
