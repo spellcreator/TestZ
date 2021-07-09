@@ -38,8 +38,7 @@ public class InventoryView : MonoBehaviour
     public void SetTextAB()
     {
         SetTextA();
-        SetTextB();
-        
+        SetTextB();  
     }
 
     private void ResetCounter()

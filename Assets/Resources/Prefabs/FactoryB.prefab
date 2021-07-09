@@ -651,16 +651,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b324813ebd3e7c84eb8fa5861e072699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWork: 0
   time: 5
+  timeResourceFly: 1
   ballInAnim: 10
   button: {fileID: 4480857873187482062}
   buttonText: {fileID: 3346275371335741557}
   slider: {fileID: 5558599753456819967}
   endFlyResourcePoint: {fileID: 0}
+  midFlyResourcePoint: {fileID: 0}
   redFabricFlyResourcePoint: {fileID: 0}
   Bball: {fileID: 5262393657729238312, guid: e7681c8004e64104b9a72b11d06c9be1, type: 3}
   Rball: {fileID: 5262393657729238312, guid: 0b72da5767ed88e43811de655031f064, type: 3}
   view: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!212 &3789884133297012333
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -707,7 +711,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.84, y: 1.84}
+  m_Size: {x: 8.2, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

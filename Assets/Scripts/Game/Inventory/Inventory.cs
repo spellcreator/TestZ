@@ -69,6 +69,20 @@ public class Inventory : MonoBehaviour
         Save();
     }
 
+    public bool ConsumeResource(ResourceType type, int count)
+    {
+        if(Resources[type] >= count)
+        {
+            Resources[type] -= count;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
     public void ResetCounter()
     {
         resources = new Dictionary<ResourceType, int>() { { ResourceType.ResourceA, 0 }, { ResourceType.ResourceB, 0 } }; ;

@@ -12,16 +12,6 @@ public class ResourceCollectorB : IResourceCollector
 
     public void Collect(int count = 1)
     {
-        if (resources[ResourceType.ResourceA] >= count * 10)
-        {
-
-            resources[ResourceType.ResourceB] += count * 3;
-            resources[ResourceType.ResourceA] -= count * 10;
-        }
-        else
-        {
-            Debug.LogWarning("Resource not enought");
-        }
-        
+        resources[ResourceType.ResourceB] += count * 3;
     }
 }

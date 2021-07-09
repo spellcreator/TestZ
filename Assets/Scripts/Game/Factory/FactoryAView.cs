@@ -11,16 +11,25 @@ public class FactoryAView : MonoBehaviour
     public event Action ButtonClick;
 
     private bool isWork;
-    public float time = 5;
+    [SerializeField]
+    private float time = 5;
+    [SerializeField]
+    private float timeResourceFly = 1f;
+    [SerializeField]
+    private Button button;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI buttonText;
+    [SerializeField]
+    private Transform endFlyResourcePoint;
+    [SerializeField]
+    private GameObject ball;
+    [SerializeField]
+    private Slider slider;
 
-    public Button button;
-    public TMPro.TextMeshProUGUI buttonText;
-    public Transform endFlyResourcePoint;
-    public GameObject ball;
-    public Slider slider;
-
-    public Inventory inventory;
-    public InventoryView view;
+    [SerializeField]
+    private Inventory inventory;
+    [SerializeField]
+    private InventoryView view;
 
 
     private void Start()
@@ -34,7 +43,7 @@ public class FactoryAView : MonoBehaviour
         inventory.AddResources += SetText;
         isWork = false; 
         slider.gameObject.SetActive(false); 
-        button.onClick.AddListener(PrepareFactory); 
+        button.onClick.AddListener(PrepareFactory);
     }
 
     // Проверяем, если фактори НЕ запущена то запускаем 
@@ -45,7 +54,8 @@ public class FactoryAView : MonoBehaviour
             slider.value = 0;
             isWork = true; 
             button.onClick.RemoveListener(PrepareFactory);
-            ButtonClick?.Invoke();
+            SetText();
+            DOVirtual.DelayedCall(time + timeResourceFly, () => ButtonClick?.Invoke());
             StartCoroutine(FactoryWork());
         }
     }
@@ -65,7 +75,7 @@ public class FactoryAView : MonoBehaviour
         button.onClick.AddListener(PrepareFactory);
         SetText();
         var sprite = Instantiate(ball, transform);
-        sprite.transform.DOMove(endFlyResourcePoint.position, 1f).OnComplete(() => { Destroy(sprite); view.SetTextA(); });
+        sprite.transform.DOMove(endFlyResourcePoint.position, timeResourceFly).OnComplete(() => { Destroy(sprite); view.SetTextA(); });
     }
 
     private void SetText()

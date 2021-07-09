@@ -219,11 +219,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
+  timeResourceFly: 1
   button: {fileID: 8289765136646720197}
   buttonText: {fileID: 7157423492617343870}
   endFlyResourcePoint: {fileID: 0}
   ball: {fileID: 5262393657729238312, guid: 0b72da5767ed88e43811de655031f064, type: 3}
   slider: {fileID: 1413152244}
+  inventory: {fileID: 0}
   view: {fileID: 0}
 --- !u!212 &8771959343750471014
 SpriteRenderer:
@@ -271,7 +273,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.84, y: 1.84}
+  m_Size: {x: 8.2, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

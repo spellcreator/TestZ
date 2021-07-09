@@ -16,7 +16,6 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
-        //загружаем баланс, или создаем новый если файла нет 
         inventory.Load();
         CreateFactory();
     }
